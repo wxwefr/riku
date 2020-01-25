@@ -6,7 +6,7 @@ module.exports = {
     category: "fun",
     description: "Sends an epic meme",
     run: async (client, message, args) => {
-        const subReddits = ["dankmeme", "meme", "me_irl"];
+        const subReddits = ["dankmeme", "meme", "me_irl", "dankchristianmemes","okbuddyretard","trebuchetmemes","MemeEconomy","memes","blessedmemes","funny"];
         const random = subReddits[Math.floor(Math.random() * subReddits.length)];
 
         const img = await randomPuppy(random);
