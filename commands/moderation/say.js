@@ -1,40 +1,29 @@
 const { RichEmbed } = require("discord.js");
-const { stripIndents } = require("common-tags");
 
 module.exports = {
-    name: "report",
-    category: "moderation",
-    description: "Reports a member",
-    usage: "<mention, id>",
-    run: async (client, message, args) => {
-        if (message.deletable) message.delete();
+    name: "say",
+    aliases: ["bc", "broadcast"],
+    description: "Says your input via the bot",
+    usage: "<input>",
+    run: (client, message, args) => {
+        message.delete();
 
-        let rMember = message.mentions.members.first() || message.guild.members.get(args[0]);
+        if (!message.member.hasPermission("MANAGE_MESSAGES"))
+            return message.reply("You don't have the required permissions to use this command.").then(m => m.delete(5000));
 
-        if (!rMember)
-            return message.reply("Couldn't find that person?").then(m => m.delete(5000));
+        if (args.length < 0)
+            return message.reply("Nothing to say?").then(m => m.delete(5000));
 
-        if (rMember.hasPermission("BAN_MEMBERS") || rMember.user.bot)
-            return message.channel.send("Can't report that member").then(m => m.delete(5000));
+        const roleColor = message.guild.me.highestRole.hexColor;
 
-        if (!args[1])
-            return message.channel.send("Please provide a reason for the report").then(m => m.delete(5000));
-        
-        const channel = message.guild.channels.find(c => c.name === "reports")
-            
-        if (!channel)
-            return message.channel.send("Couldn't find a `#reports` channel").then(m => m.delete(5000));
+        if (args[0].toLowerCase() === "embed") {
+            const embed = new RichEmbed()
+                .setDescription(args.slice(1).join(" "))
+                .setColor(roleColor === "#000000" ? "#ffffff" : roleColor);
 
-        const embed = new RichEmbed()
-            .setColor("#ff0000")
-            .setTimestamp()
-            .setFooter(message.guild.name, message.guild.iconURL)
-            .setAuthor("Reported member", rMember.user.displayAvatarURL)
-            .setDescription(stripIndents`**- Member:** ${rMember} (${rMember.user.id})
-            **- Reported by:** ${message.member}
-            **- Reported in:** ${message.channel}
-            **- Reason:** ${args.slice(1).join(" ")}`);
-
-        return channel.send(embed);
+            message.channel.send(embed);
+        } else {
+            message.channel.send(args.join(" "));
+        }
     }
 }
