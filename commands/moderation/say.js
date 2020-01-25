@@ -2,7 +2,8 @@ const { RichEmbed } = require("discord.js");
 
 module.exports = {
     name: "say",
-    aliases: ["bc", "broadcast"],
+    category: "moderation",
+    aliases: ["s", "speak"],
     description: "Says your input via the bot",
     usage: "<input>",
     run: (client, message, args) => {
