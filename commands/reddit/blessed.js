@@ -2,11 +2,11 @@ const { RichEmbed } = require("discord.js");
 const randomPuppy = require("random-puppy");
 
 module.exports = {
-    name: "ihadastroke",
-    category: "fun",
-    description: "Sends a stroke",
+    name: "blessed",
+    category: "reddit",
+    description: "Sends a blessed image",
     run: async (client, message, args) => {
-        const subReddits = ["ihadastroke"];
+        const subReddits = ["blessedimages","Blessed_Images","blessedcomments","BlessedJoJo","cursed_or_blessed"];
         const random = subReddits[Math.floor(Math.random() * subReddits.length)];
 
         const img = await randomPuppy(random);

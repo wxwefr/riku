@@ -3,7 +3,7 @@ const randomPuppy = require("random-puppy");
 
 module.exports = {
     name: "cursed",
-    category: "fun",
+    category: "reddit",
     description: "Sends an cursed image",
     run: async (client, message, args) => {
         const subReddits = ["Cursed_Images", "cursedimages", "MakeMeSuffer","cursed_cats", "cursedvideos", "cursedgifs", "cursedcomments", "cursed_or_blessed", "cursedmemes", "cursedjojo", "CursedMinecraft"];
