@@ -1,7 +1,6 @@
 const { Client, Collection } = require("discord.js");
 const { config } = require("dotenv");
 const fs = require("fs");
-const Welcome = require("discord-welcome");
 
 const client = new Client({
     disableEveryone: true
@@ -32,9 +31,6 @@ client.on("ready", () => {
     }); 
 });
 
-Welcome(bot, {
-    privatemsg : "Welcome to Ａｎｉｍｅ ねヲ緯",
-    });
 
 
 client.on("message", async message => {
