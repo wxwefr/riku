@@ -2,22 +2,28 @@ const { Client, Collection } = require("discord.js");
 const { config } = require("dotenv");
 const fs = require("fs");
 
+
 const client = new Client({
     disableEveryone: true
 });
 
+
 client.commands = new Collection();
 client.aliases = new Collection();
 
+
 client.categories = fs.readdirSync("./commands/");
+
 
 config({
     path: __dirname + "/.env"
 });
 
+
 ["command"].forEach(handler => {
     require(`./handlers/${handler}`)(client);
 });
+
 
 client.on("ready", () => {
     console.log(`Hi, ${client.user.username} is now online!`);
@@ -30,7 +36,6 @@ client.on("ready", () => {
         }
     }); 
 });
-
 
 
 client.on("message", async message => {
