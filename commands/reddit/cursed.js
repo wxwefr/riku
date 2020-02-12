@@ -8,8 +8,6 @@ module.exports = {
     run: async (client, message, args) => {
 
         const subReddits = ["Cursed_Images", "cursedimages", "MakeMeSuffer","cursed_cats", "cursedvideos", "cursedcomments", "cursed_or_blessed", "cursedmemes", "CursedMinecraft"];
-=======
-        const subReddits = ["Cursed_Images", "cursedimages", "MakeMeSuffer","cursed_cats", "cursedvideos", "cursedcomments", "cursed_or_blessed", "cursedmemes"];
 
         const random = subReddits[Math.floor(Math.random() * subReddits.length)];
 
