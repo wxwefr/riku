@@ -14,7 +14,7 @@ client.aliases = new Collection();
 
 client.categories = fs.readdirSync("./commands/");
 
-guild.members.filter(member => !member.user.bot).size;
+
 
 config({
     path: __dirname + "/.env"
